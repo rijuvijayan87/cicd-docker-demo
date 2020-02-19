@@ -39,14 +39,14 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                //withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
                         //sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"sudo docker pull rijuvijayan/train-schedule:${env.BUILD_NUMBER}\""
                         sshagent(['my-ssh-key']) {
                             sh "deploy@54.206.20.122 \"sudo docker pull rijuvijayan/train-schedule:${env.BUILD_NUMBER}\""
                         }
                     }
-                }
+               // }
             }
         }
     }
