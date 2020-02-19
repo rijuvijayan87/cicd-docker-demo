@@ -43,7 +43,7 @@ pipeline {
                     script {
                         //sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"sudo docker pull rijuvijayan/train-schedule:${env.BUILD_NUMBER}\""
                         sshagent(['my-ssh-key']) {
-                            sh "$USERNAME@$prod_ip \"sudo docker pull rijuvijayan/train-schedule:${env.BUILD_NUMBER}\""
+                            sh "deploy@54.206.20.122 \"sudo docker pull rijuvijayan/train-schedule:${env.BUILD_NUMBER}\""
                         }
                     }
                 }
